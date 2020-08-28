@@ -1,1 +1,14 @@
 // Specific CSS for your home-page
+body a {
+  text-decoration: none !important;
+}
+
+.title-link {
+  color: #8B6162;
+  font-weight: bold;
+  font-size: 24px;
+
+  &:hover {
+    color: #411F20;
+  }
+}

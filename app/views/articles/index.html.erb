@@ -1,4 +1,6 @@
+<div class="d-flex justify-content-center mb-3">
 <%= link_to "New Article", new_article_path, class:"btn btn-secondary btn-lg", id: "new-article-btn" %>
+</div>
 <% if @articles.empty? %>
   <div class="d-flex justify-content-center">
     <h1 id="no-articles">No Articles Created</h1>
@@ -9,7 +11,7 @@
     <div class="row d-flex justify-content-center">
     <div class="card col-sm-12 col-md-10 col-lg-8 px-0 mx-3">
       <div class="card-header ">
-        <%= link_to article.title, article_path(article) %>
+        <%= link_to article.title, article_path(article), class:"title-link" %>
       </div>
       <div class="card-body">
         <blockquote class="blockquote mb-0">
