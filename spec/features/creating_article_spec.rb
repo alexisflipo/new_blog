@@ -9,6 +9,7 @@ RSpec.feature "Creating Articles" do
 
     fill_in "Title", with: "Creating a blog"
     fill_in "Body", with: "Lorem ipsum dolor sit amet."
+    fill_in "Author", with: "Alex"
 
     click_button "Create Article"
 
@@ -23,11 +24,13 @@ RSpec.feature "Creating Articles" do
 
     fill_in "Title", with: ""
     fill_in "Body", with: ""
+    fill_in "Author", with: ""
 
     click_button "Create Article"
 
     expect(page).to have_content("Article has not been created")
     expect(page).to have_content("Title can't be blank")
     expect(page).to have_content("Body can't be blank")
+    expect(page).to have_content("Author can't be blank")
   end
 end

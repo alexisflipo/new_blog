@@ -1,6 +1,21 @@
-<%= link_to "New Article", new_article_path %>
+<%= link_to "New Article", new_article_path, class:"btn btn-secondary btn-lg", id: "new-article-btn" %>
 
 <% @articles.each do |article| %>
-  <%= article.title %>
-  <%= article.body %>
+<div class="container mt-3">
+  <div class="row d-flex justify-content-center">
+  <div class="card col-sm-12 col-md-10 col-lg-8 px-0">
+    <div class="card-header ">
+      <%= link_to article.title, article_path(article) %>
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <%= truncate(article.body, length: 500) %>
+        <footer class="blockquote-footer"><%= article.author %> - <cite title="datetime"><%= article.created_at.day%> <%= Date::MONTHNAMES[article.created_at.month] %> at <%= article.created_at.localtime.hour %> h <%= article.created_at.localtime.min %></cite></footer>
+      </blockquote>
+    </div>
+  </div>
+  </div>
+ </div>
 <% end %>
+
+

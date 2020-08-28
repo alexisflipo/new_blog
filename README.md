@@ -1,1 +1,8 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Listing articles feature test
+
+- create branch
+- create 2 articles to display
+
+- list the two articles
+
+- expect both article titles and bodies to be present
