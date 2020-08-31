@@ -6,7 +6,13 @@
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li >
-        <%= link_to "Authors", new_article_path %>
+        <%= link_to "Authors", new_article_path, class:"mr-3" %>
+      </li>
+      <li >
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"mr-3" %>
+      </li>
+      <li >
+        <%= link_to "Sign up", new_user_registration_path, class:"mr-3" %>
       </li>
     </ul>
   </div>
