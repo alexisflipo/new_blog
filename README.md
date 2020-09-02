@@ -1,8 +1,3 @@
-Listing articles feature test
+# Test Drivent Development
 
-- create branch
-- create 2 articles to display
-
-- list the two articles
-
-- expect both article titles and bodies to be present
+I used tdd to create a blog and its articles.
