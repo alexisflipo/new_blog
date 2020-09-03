@@ -6,14 +6,15 @@
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto ">
       <li ><%= link_to "Authors", new_article_path, class:"mr-3" %></li>
-      <% unless user_signed_in? %>
+      <% if user_signed_in? %>
+        <li ><%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"mr-3" %></li>
+      <% else %>
         <li ><%= link_to "Sign up", new_user_registration_path, class:"mr-3" %></li>
         <li ><%= link_to "Sign in", new_user_session_path, class:"mr-3" %></li>
       <% end %>
       <% if user_signed_in? %>
         <p class="navbar-text"> Signed in as <%= "#{current_user.email}" %> </p>
       <% end %>
-      <li ><%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"mr-3" %></li>
     </ul>
   </div>
 </nav>
