@@ -11,6 +11,8 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.user = current_user
+    @article.save
     if @article.save
       redirect_to articles_path, notice: "Article has been created"
     else
