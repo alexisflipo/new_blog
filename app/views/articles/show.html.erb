@@ -10,9 +10,11 @@
   </div>
 </div>
 <div class="d-flex justify-content-center">
-  <%= link_to "Edit Article", edit_article_path(@article), class: "btn btn-secondary mt-3" %>
-  <%= link_to "Delete Article", article_path(@article), method: :delete,
-  data: {confirm: "Are you sure you want to delete article ?"},
-  class: "btn btn-danger mt-3 ml-3" %>
+  <% if user_signed_in? && @article.user == current_user%>
+    <%= link_to "Edit Article", edit_article_path(@article), class: "btn btn-secondary mt-3" %>
+    <%= link_to "Delete Article", article_path(@article), method: :delete,
+    data: {confirm: "Are you sure you want to delete article ?"},
+    class: "btn btn-danger mt-3 ml-3" %>
+  <% end %>
 </div>
 

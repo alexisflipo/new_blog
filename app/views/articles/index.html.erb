@@ -1,5 +1,7 @@
 <div class="d-flex justify-content-center mb-3">
-<%= link_to "New Article", new_article_path, class:"btn btn-secondary btn-lg", id: "new-article-btn" %>
+  <% if user_signed_in? %>
+    <%= link_to "New Article", new_article_path, class:"btn btn-secondary btn-lg", id: "new-article-btn" %>
+  <% end %>
 </div>
 <% if @articles.empty? %>
   <div class="d-flex justify-content-center">
