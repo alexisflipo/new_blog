@@ -18,9 +18,26 @@
   <% end %>
 </div>
 
+<% if user_signed_in? %>
+
+
 <div class="col-md-12">
   <%= form_for [@article, @comment],
       :html => { class: "form-horizontal", role: "form"} do |f| %>
+      <% if @comment.errors.any? %>
+        <div class="panel panel-danger">
+          <h2 class="panel-title"> <%=  pluralize(@comment.errors.count, "error")%>
+          prohibited this comment from being saved: </h2>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <% @comment.errors.full_messages.each do |msg| %>
+            <li> <%= msg %> </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
   <div class="form-group">
     <div class="control-label col-md-2">
       <%= f.label :body, 'New Comment' %>
@@ -28,19 +45,18 @@
     <div class="col-md-10">
       <%= f.text_area :body, rows: 10, class: 'form-control', placeholder: 'Your comment' %>
     </div>
-  </div>
-</div>
-
-  <div class="form-group">
     <div class="col-md-10">
-      <%= f.submit "Add Comment", class: "btn btn-primary" %>
+      <%= f.submit "Add Comment", class: "btn btn-primary mt-3" %>
     </div>
   </div>
    <% end %>
-
+</div>
+  </div>
+<% end %>
    <div class='col-md-12'>
+   <% if @article.comments.count > 0 %>
   <header>
-    <h2>Comments</h2>
+    <h2> Comments</h2>
   </header>
   <div class="col-md-10">
     <% if @article.comments.any? %>
@@ -58,5 +74,5 @@
       There are no comments to show.
     <% end %>
   </div>
-
+<% end %>
 
