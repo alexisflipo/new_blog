@@ -18,7 +18,7 @@
   <% end %>
 </div>
 
-<% if user_signed_in? %>
+
 
 
 <div class="col-md-12">
@@ -37,36 +37,38 @@
           </ul>
         </div>
       <% end %>
+    <div class="container d-flex justify-content-center">
+      <div class="form-group col-md-12">
+        <div class="control-label col-md-12">
+          <%= f.label :body, 'New Comment', class:"mt-3" %>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <%= f.text_area :body, rows: 10, class: 'form-control', placeholder: 'Your comment' %>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <%= f.submit "Add Comment", class: "btn btn-primary mt-3" %>
+        </div>
+      </div>
+       <% end %>
+    </div>
+  </div>
 
-  <div class="form-group">
-    <div class="control-label col-md-2">
-      <%= f.label :body, 'New Comment' %>
-    </div>
-    <div class="col-md-10">
-      <%= f.text_area :body, rows: 10, class: 'form-control', placeholder: 'Your comment' %>
-    </div>
-    <div class="col-md-10">
-      <%= f.submit "Add Comment", class: "btn btn-primary mt-3" %>
-    </div>
-  </div>
-   <% end %>
-</div>
-  </div>
-<% end %>
-   <div class='col-md-12'>
+<div class="container d-flex justify-content-center">
+   <div class='col-sm-12 col-md-12 col-lg-12'>
    <% if @article.comments.count > 0 %>
   <header>
-    <h2> Comments</h2>
+    <h2 class="text-center my-3"> Comments</h2>
   </header>
-  <div class="col-md-10">
+    <% end %>
+  <div class="col-sm-12 col-md-12 col-lg-12">
     <% if @article.comments.any? %>
       <% persisted_comments(@comments).each do |comment| %>
     <div class="comment-body">
       <%= comment.body %>
     </div>
     <div class="comment-time">
-      <%= time_ago_in_words(comment.created_at) %>
-      ago by <%= comment.user.email %>
+      <p class="author"> <%= time_ago_in_words(comment.created_at).capitalize %>
+      ago by <strong><%= comment.user.email %></strong></p>
     </div>
     <hr>
       <% end %>
@@ -74,5 +76,5 @@
       There are no comments to show.
     <% end %>
   </div>
-<% end %>
-
+</div>
+</div>
