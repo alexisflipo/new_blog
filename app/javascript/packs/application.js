@@ -26,7 +26,7 @@ require("channels")
 import "bootstrap";
 
 // Internal imports, e.g:
-import { initChatroomCable } from '../channels/chatroom_channel.js';
+import { initChatroomCable } from '../channels/comments.js';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:

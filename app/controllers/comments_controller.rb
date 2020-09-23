@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
       else
         flash[:alert] = "Comment has not been created"
       end
-        #redirect_to article_path(@article, anchor: "comment-#{@comment.id}")
+        redirect_to article_path(@article, anchor: "comment-#{@comment.id}")
     end
   end
 

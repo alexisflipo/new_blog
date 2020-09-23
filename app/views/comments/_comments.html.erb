@@ -1,0 +1,10 @@
+      <div id='comments' data-comment-id='<%= comment.id %>'>
+    <div class='comment-body'>
+      <%= comment.body %>
+    </div>
+    <div class='comment-time'>
+      <p class='author'> <%= time_ago_in_words(comment.created_at).capitalize %>
+      ago by <strong><%= comment.user.email %></strong></p>
+    </div>
+  </div>
+    <hr>
