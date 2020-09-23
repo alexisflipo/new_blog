@@ -22,7 +22,7 @@
 
 
 <div class="col-md-12">
-  <%= form_for [@article, @comment],
+  <%= form_for [@article, @comment], remote: true,
       :html => { class: "form-horizontal", role: "form"} do |f| %>
       <% if @comment.errors.any? %>
         <div class="panel panel-danger">
@@ -45,7 +45,7 @@
         <div class="col-sm-12 col-md-12 col-lg-12">
           <%= f.text_area :body, rows: 10, class: 'form-control', placeholder: 'Your comment' %>
         </div>
-        <div class="col-sm-12 col-md-12 col-lg-12">
+        <div id="submit-button" class="col-sm-12 col-md-12 col-lg-12">
           <%= f.submit "Add Comment", class: "btn btn-primary mt-3" %>
         </div>
       </div>
@@ -57,19 +57,22 @@
    <div class='col-sm-12 col-md-12 col-lg-12'>
    <% if @article.comments.count > 0 %>
   <header>
+
     <h2 class="text-center my-3"> Comments</h2>
   </header>
     <% end %>
-  <div class="col-sm-12 col-md-12 col-lg-12">
+  <div class='col-sm-12 col-md-12 col-lg-12'>
     <% if @article.comments.any? %>
       <% persisted_comments(@comments).each do |comment| %>
-    <div class="comment-body">
+      <div id='comments' data-comment-id='<%= comment.id %>'>
+    <div class='comment-body'>
       <%= comment.body %>
     </div>
-    <div class="comment-time">
-      <p class="author"> <%= time_ago_in_words(comment.created_at).capitalize %>
+    <div class='comment-time'>
+      <p class='author'> <%= time_ago_in_words(comment.created_at).capitalize %>
       ago by <strong><%= comment.user.email %></strong></p>
     </div>
+  </div>
     <hr>
       <% end %>
     <% else %>
