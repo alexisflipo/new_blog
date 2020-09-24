@@ -1,7 +1,5 @@
 <div class="d-flex justify-content-center mb-3">
-  <% if user_signed_in? %>
     <%= link_to "New Article", new_article_path, class:"btn btn-secondary btn-lg", id: "new-article-btn" %>
-  <% end %>
 </div>
 <% if @articles.empty? %>
   <div class="d-flex justify-content-center">
@@ -17,8 +15,12 @@
       </div>
       <div class="card-body">
         <blockquote class="blockquote mb-0">
-          <%= truncate(article.body, length: 500) %>
-          <footer class="blockquote-footer"><%= article.author %> - <cite title="datetime"><%= article.created_at.strftime("%b %d - %Y at %H h %M") %></cite></footer>
+          <% if article.body.length > 400 %>
+          <%= truncate(article.body, length: 400) %>
+          <% else %>
+          <%= article.body.glance %>
+          <% end %>
+          <footer class="blockquote-footer mt-3"><%= article.author %> - <cite title="datetime"><%= article.created_at.strftime("%b %d - %Y at %H h %M") %></cite></footer>
         </blockquote>
       </div>
     </div>
