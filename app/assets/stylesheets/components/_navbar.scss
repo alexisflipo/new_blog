@@ -2,7 +2,9 @@
   justify-content: space-between;
   background: #411f1f;
 }
+button .dropdown {
 
+}
 nav a {
   color: white;
   &:hover {
@@ -11,11 +13,12 @@ nav a {
   }
 }
 nav .nav-title  {
-  color: white;
+  color: yellow;
+  font-weight: bold;
   text-decoration: none;
-  font-size: 30px;
+  font-size: 25px;
   &:hover {
-    color:black;
+    color:white;
   }
 }
 
@@ -23,10 +26,20 @@ nav li {
   color: white;
 }
 
+.duck {
+  width: 100px;
+  height: 100px;
+}
 @media(min-width: 1024px) {
   nav .navbar-author {
     position: absolute;
     right: 30px;
   }
 
+}
+@media(max-width: 1024px) {
+  .duck {
+  width: 50px;
+  height: 50px;
+}
 }

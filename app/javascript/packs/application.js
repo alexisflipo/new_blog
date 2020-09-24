@@ -33,3 +33,6 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   // initChatroomCable();
 });
+
+require("trix")
+require("@rails/actiontext")

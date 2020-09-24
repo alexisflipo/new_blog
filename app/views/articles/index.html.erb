@@ -11,17 +11,18 @@
     <div class="row d-flex justify-content-center">
     <div class="card col-sm-12 col-md-10 col-lg-8 px-0 mx-3">
       <div class="card-header ">
-        <%= link_to article.title, article_path(article), class:"title-link" %>
+        <%= link_to article.title.capitalize, article_path(article), class:"title-link" %>
       </div>
       <div class="card-body">
         <blockquote class="blockquote mb-0">
-          <% if article.body.length > 400 %>
-          <%= truncate(article.body, length: 400) %>
-          <% else %>
-          <%= article.body.glance %>
-          <% end %>
+          <div class="article-body">
+            <%= truncate(article.body.to_s, length: 500) %>
+          </div>
           <footer class="blockquote-footer mt-3"><%= article.author %> - <cite title="datetime"><%= article.created_at.strftime("%b %d - %Y at %H h %M") %></cite></footer>
         </blockquote>
+        <% if article.body.to_s.length > 400 %>
+            <%= link_to "See more", article_path(article), class:"btn btn-light mt-3" %>
+          <% end %>
       </div>
     </div>
     </div>
