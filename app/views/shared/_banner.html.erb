@@ -8,14 +8,18 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto d-flex align-items-center ">
-      <% if user_signed_in? %>
-        <li ><%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"nav-part mr-3" %></li>
-      <% else %>
-        <li ><%= link_to "Sign up", new_user_registration_path, class:"nav-part mr-3" %></li>
-        <li ><%= link_to "Sign in", new_user_session_path, class:"nav-part mr-3" %></li>
+      <% if !user_signed_in? %>
+        <li ><%= link_to "Sign up", new_user_registration_path, class:"nav-sign mr-3" %></li>
+        <li ><%= link_to "Sign in", new_user_session_path, class:"nav-sign mr-3" %></li>
       <% end %>
       <% if user_signed_in? %>
-        <li class="navbar-author">Signed in as <%= "#{current_user.email}" %></li>
+        <li class="nav-item dropdown navbar-author">
+          <a class="nav-link dropdown-toggle nav-email" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= "#{current_user.email}" %></a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"dropdown-item nav-sign mr-3" %>
+        </div>
+        </li>
       <% end %>
     </ul>
   </div>

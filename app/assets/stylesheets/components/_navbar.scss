@@ -6,15 +6,33 @@ button .dropdown {
 
 }
 nav a {
-  color: white;
   font-weight: bold;
   &:hover {
-    color:yellow;
     text-decoration: none;
   }
 }
 
+.dropdown-menu {
+  background-color: #411f1f;
+}
 
+.dropdown-item {
+  background-color: transparent !important;
+  &:hover {
+    font-weight: bold;
+  }
+}
+.nav-email {
+  color: white !important;
+}
+
+.nav-sign {
+  color: white;
+  font-weight: bold;
+  &:hover {
+    color: yellow;
+  }
+}
 nav .nav-title  {
   color: yellow;
   font-weight: bold;
