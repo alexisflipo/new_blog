@@ -7,19 +7,19 @@ button .dropdown {
 }
 nav a {
   color: white;
+  font-weight: bold;
   &:hover {
-    color:black;
+    color:yellow;
     text-decoration: none;
   }
 }
+
+
 nav .nav-title  {
   color: yellow;
   font-weight: bold;
   text-decoration: none;
   font-size: 25px;
-  &:hover {
-    color:white;
-  }
 }
 
 nav li {
