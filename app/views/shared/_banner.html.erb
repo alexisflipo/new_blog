@@ -13,11 +13,12 @@
         <li ><%= link_to "Sign in", new_user_session_path, class:"nav-sign mr-3" %></li>
       <% end %>
       <% if user_signed_in? %>
-        <li class="nav-item dropdown navbar-author">
-          <a class="nav-link dropdown-toggle nav-email" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= "#{current_user.email}" %></a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"dropdown-item nav-sign mr-3" %>
+        <li class="nav-item dropdown navbar-author" data-behaviour="notifications">
+          <a class="nav-link dropdown-toggle nav-email" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-bell nav-sign" ><span data-behaviour="unread-count"></span></i></a>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"dropdown-item nav-sign mr-3" %>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="notifs" data-behaviour="notification-items">
+
         </div>
         </li>
       <% end %>
