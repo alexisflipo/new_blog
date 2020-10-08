@@ -9,9 +9,7 @@ class CommentsController < ApplicationController
       @comment = @article.comments.build(comment_params)
       @comment.user = current_user
       if @comment.save
-        @article.comments.each do |comment|
-        Notification.create(recipient: @article.user, actor: current_user, action:"posted", notifiable: comment)
-      end
+        Notification.create(recipient: @article.user, actor: current_user, action:"posted", notifiable: @comment, article: @article)
         flash[:notice] = "Comment has been successfully created"
       else
         flash[:alert] = "Comment has not been created"

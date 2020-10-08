@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'articles#index'
+
   resources :articles do
     resources :comments
   end
-  resources :notifications #do
-  #   collection do
-  #     comment :mark_as_read
-  #   end
-  # end
+  get 'notifications.json', to: "notifications#index"
+  post 'notifications/mark_as_read', to: "notifications#mark_as_read"
+  root to: 'articles#index'
   # mount ActionCable.server => '/cable'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
