@@ -34,6 +34,14 @@ document.addEventListener('turbolinks:load', () => {
   // initChatroomCable();
  notifications();
 
+(function worker() {
+  $.get('/notifications.json', function(data) {
+    // Now that we've completed the request schedule the next one.
+    setTimeout(worker, 15000);
+    if (data.length > 0) {
+    $('#notifs-count').html(' ' + data[0].count + ' ' + 'notifications');
+  }});
+})();
 });
 
 require("trix")
