@@ -1,13 +1,10 @@
 class NotificationChannel < ApplicationCable::Channel
   def subscribed
-    stream_from current_user
+    stream_from "NotificationChannel"
   end
 
   def unsubscribed
     stop_all_streams
   end
 
-  def receive(data)
-    ActionCable.server.broadcast("notifications:#{params[:id]}", data)
-  end
 end
