@@ -9,12 +9,16 @@ class CommentsController < ApplicationController
       @comment = @article.comments.build(comment_params)
       @comment.user = current_user
       if @comment.save
-        Notification.create(recipient: @article.user, actor: current_user, action:"posted", notifiable: @comment, article: @article)
+        # redirect_to article_path(@article)
         flash[:notice] = "Comment has been successfully created"
+        # return
+        ActionCable.server.broadcast "comments_channel",
+          comment_render(@comment)
+        # Notification.create(recipient: @article.user, actor: current_user, action:"posted", notifiable: @comment, article: @article)
       else
         flash[:alert] = "Comment has not been created"
-      end
         redirect_to article_path(@article)
+      end
     end
   end
 
@@ -27,4 +31,8 @@ class CommentsController < ApplicationController
   def set_article
     @article = Article.find(params[:article_id])
   end
+
+  def comment_render(message)
+  render(partial: 'comment', locals: { comment: @comment })
+end
 end

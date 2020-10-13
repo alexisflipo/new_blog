@@ -16,7 +16,7 @@ const notifications = () => {
     method: "GET",
     success: (data) =>
     $.map(data, function(notification) {
-    items = `<a class="dropdown-item nav-sign" href="${notification.url}">${notification.actor.email} ${notification.action} ${notification.notifiable.type}</a>`
+    items = `<a id="item-notif" class="dropdown-item nav-sign" href="${notification.url}">${notification.actor.email} ${notification.action} ${notification.notifiable.type}</a>`
     $("#notifs").append(items)
 
     })

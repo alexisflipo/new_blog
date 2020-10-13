@@ -26,22 +26,17 @@ require("jquery")
 import "bootstrap";
 
 // Internal imports, e.g:
-import { initChatroomCable } from '../channels/comments.js';
+import { initCommentCable } from '../channels/comments.js';
 import { notifications } from '../packs/notifications.js'
+import { initNotificationCable } from '../channels/notification_channel.js';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  // initChatroomCable();
- notifications();
+  initCommentCable();
 
-(function worker() {
-  $.get('/notifications.json', function(data) {
-    // Now that we've completed the request schedule the next one.
-    setTimeout(worker, 15000);
-    if (data.length > 0) {
-    $('#notifs-count').html(' ' + data[0].count + ' ' + 'notifications');
-  }});
-})();
+notifications();
+initNotificationCable();
+
 });
 
 require("trix")

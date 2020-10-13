@@ -1,16 +1,24 @@
 import consumer from "./consumer";
 
-const initChatroomCable = () => {
-  const commentsContainer = document.getElementById('comments');
-  if (commentsContainer) {
-    const id = commentsContainer.dataset.commentId;
+const initCommentCable = () => {
+  consumer.subscriptions.create("CommentsChannel", {
+  connected: function() {
 
-    consumer.subscriptions.create({ comment: "CommentsChannel", id: id }, {
-      received(data) {
-       commentsContainer.insertAdjacentHTML('beforeend', data);
-      },
-    });
+    // Called when the subscription is ready for use on the server
+  },
+
+  disconnected: function() {
+    // Called when the subscription has been terminated by the server
+  },
+
+  received: function(data) {
+
+    // Called when there's incoming data on the websocket for this channel
+    console.log(data)
+    $("#messages").append($("#messages"));
+
   }
+});
 }
 
-export { initChatroomCable };
+export { initCommentCable };

@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module NewBlog
   class Application < Rails::Application
-    # config.action_cable.mount_path = "/cable"
+    config.action_cable.mount_path = "/cable"
     config.generators do |generate|
       generate.assets false
       generate.helper false
