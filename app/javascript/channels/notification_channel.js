@@ -15,10 +15,20 @@ const initNotificationCable = () => {
   received: function(data) {
 
     // Called when there's incoming data on the websocket for this channel
-    $("#messages").append(data);
+    $('#notifs').append("")
+    $('#notifs').append(data)
 
-  }
-});
+$.ajax({
+    url: "/notifications.json",
+    datatype: "JSON",
+    method: "GET",
+    success: (data) =>
+    $.map(data, function(notification) {
+      const items = ` ${notification.count} notifications`
+    $('#notifs-count').text(items)
+  })
+   });
 }
-
+})
+}
 export { initNotificationCable };

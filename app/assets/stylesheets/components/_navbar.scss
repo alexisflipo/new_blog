@@ -13,8 +13,9 @@ nav a {
 }
 
 .dropdown-menu {
+
   background-color: #411f1f;
-  border: transparent !important;
+  border: 1px solid black
 }
 
 .dropdown-item {
@@ -51,8 +52,8 @@ nav li {
 }
 @media(min-width: 1024px) {
   nav .navbar-author {
-    position: absolute;
-    right: 30px;
+    // position: absolute;
+    // right: 30px;
   }
 
 }

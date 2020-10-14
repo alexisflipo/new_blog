@@ -13,18 +13,17 @@
         <li ><%= link_to "Sign in", new_user_session_path, class:"nav-sign mr-3" %></li>
       <% end %>
       <% if user_signed_in? %>
-        <li class="nav-item dropdown navbar-author" data-behaviour="notifications">
+        <li class="nav-item dropdown navbar-author " data-behaviour="notifications">
           <a class="nav-link nav-email" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <% if current_user.notifications.unread.count == 1 %>
-              <i class="fas fa-bell nav-sign mr-2" id="notifs-count" data-behaviour="notifications-link" >  <span data-behaviour="unread-count"> <%= current_user.notifications.unread.count %></span> notification</i> </a>
-            <% else %>
             <i class="fas fa-bell nav-sign mr-2" id="notifs-count" data-behaviour="notifications-link" >  <span data-behaviour="unread-count"> <%= current_user.notifications.unread.count %></span> notifications</i> </a>
-            <% end %>
-            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"dropdown-item nav-sign mr-3" %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="notifs" data-behaviour="notification-items">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1" id="notifs" >
+          <% current_user.notifications.unread.each do  |notification| %>
+        <%= link_to "#{notification.actor.email} #{notification.action} a #{notification.notifiable_type}", article_path(notification.article_id), class: "dropdown-item nav-sign" %>
+        <% end %>
         </div>
         </li>
       <% end %>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"nav-sign mr-3" %>
     </ul>
   </div>
 </nav>
