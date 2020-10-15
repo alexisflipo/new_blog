@@ -22,7 +22,10 @@ RSpec.feature "Listing Articles" do
   end
 
   scenario "with articles created and user signed in" do
-    login_as(@john)
+    visit new_user_session_path
+    fill_in :user_email, with: 'john@example.com'
+    fill_in :user_password, with: 'password'
+    click_on 'Log in'
     visit "/"
     expect(page).to have_content(@article1.title)
     expect(page).to have_content(@article1.body)

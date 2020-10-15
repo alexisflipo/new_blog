@@ -8,11 +8,14 @@ RSpec.feature "Adding reviews to Articles" do
   end
 
   scenario "permits a signed in user to write a review" do
-    login_as(@fred)
+    visit new_user_session_path
+    fill_in :user_email, with: 'fred@exemple.com'
+    fill_in :user_password, with: 'password'
+    click_on 'Log in'
 
     visit "/"
 
-    click_link @article.title
+    click_link @article.title.capitalize
     fill_in "New Comment", with: "An amazing article"
     click_button "Add Comment"
 

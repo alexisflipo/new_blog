@@ -22,8 +22,8 @@
         <% end %>
         </div>
         </li>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"nav-sign mr-3" %>
       <% end %>
-            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"nav-sign mr-3" %>
     </ul>
   </div>
 </nav>

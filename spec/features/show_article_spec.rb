@@ -22,7 +22,10 @@ RSpec.feature "Show article" do
 end
 
   scenario 'to non-owner hide the Edit and Delete buttons' do
-  login_as(@fred)
+  visit new_user_session_path
+    fill_in :user_email, with: 'fred@exemple.com'
+    fill_in :user_password, with: 'password'
+    click_on 'Log in'
   visit "/"
 
   click_link @article.title

@@ -5,7 +5,10 @@ RSpec.feature "Editing an article" do
 
   before do
     john = User.create!(email: "john@example.com", password: "password")
-    login_as(john)
+    visit new_user_session_path
+    fill_in :user_email, with: 'john@example.com'
+    fill_in :user_password, with: 'password'
+    click_on 'Log in'
     @article = Article.create(title: "first title", body: "body", author: "alex", user: john)
   end
 

@@ -9,14 +9,15 @@ class CommentsController < ApplicationController
       @comment.user = current_user
       if @comment.save
         @notification = Notification.create(recipient: @article.user, actor: current_user, action:"posted", notifiable: @comment, article: @article)
-        comment_broadcast
-        notification_broadcast
+        ActionCable.server.broadcast "comments_channel",
+        render_to_string(partial: 'comments/comment', object: @comment)
+        ActionCable.server.broadcast "notification_channel",
+        render_to_string(partial: 'notifications/notification', object: @notification)
         flash[:notice] = "Comment has been successfully created"
-      redirect_to article_path(@article)
       else
         flash[:alert] = "Comment has not been created"
-        redirect_to article_path(@article)
       end
+        redirect_to article_path(@article)
     end
   end
 
