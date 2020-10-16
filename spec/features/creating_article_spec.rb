@@ -1,6 +1,11 @@
 require "rails_helper"
 
 RSpec.feature "Creating Articles" do
+
+  let(:create_article) do
+          @article = Article.create(title: 'Creating a blog', body: 'capybara', author: "Alex")
+        end
+
   before do
     @john = User.create!(email: "john@example.com", password: "password")
     visit new_user_session_path
@@ -17,7 +22,9 @@ RSpec.feature "Creating Articles" do
     page.fill_in "Author", with: "Alex"
 
     click_button "Create Article"
-    expect(Article.last.user).to eq(@john)
+    create_article
+    expect(response).to have_http_status(:redirect)
+    expect(@article.user).to eq(@john)
     expect(page).to have_content("Article has been created")
     expect(page.current_path).to eq(articles_path)
     expect(page).to have_content("#{Article.last.author}")

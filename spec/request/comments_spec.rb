@@ -24,7 +24,10 @@ RSpec.describe "Comments", type: :request do
 
   context "with a logged in user" do
     before do
-      login_as(@fred)
+      get new_user_session_path
+    fill_in :user_email, with: 'fred@exemple.com'
+    fill_in :user_password, with: 'password'
+    click_on 'Log in'
       post "/articles/#{@article.id}/comments", params: { comment: {body: "Awesome blog"}}
     end
     it "create the comment successfully" do

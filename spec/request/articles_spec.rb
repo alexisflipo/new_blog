@@ -21,7 +21,11 @@ RSpec.describe "Articles", type: :request do
 
     context 'with signed in user who is non-owner' do
       before do
-        login_as(@fred)
+       get root_path
+      click_link "Sign in"
+      fill_in "Email", with: @fred.email
+      fill_in "Password", with: @fred.password
+      click_button "Log in"
         get "/articles/#{@article.id}/edit"
       end
 
@@ -34,7 +38,11 @@ RSpec.describe "Articles", type: :request do
 
     context "with signed in user as owner successful edit" do
       before do
-        login_as(@john)
+        get root_path
+        click_link "Sign in"
+      fill_in "Email", with: @john.email
+      fill_in "Password", with: @john.password
+      click_button "Log in"
         get "/articles/#{@article.id}/edit"
       end
 
