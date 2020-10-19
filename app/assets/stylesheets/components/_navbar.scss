@@ -8,14 +8,13 @@ button .dropdown {
 nav a {
   font-weight: bold;
   &:hover {
-    text-decoration: none;
+    text-decoration: none !important;
   }
 }
 
 .dropdown-menu {
-
   background-color: #411f1f;
-  border: 1px solid black
+  border: none !important;
 }
 
 .dropdown-item {
