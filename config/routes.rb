@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   # post 'notifications', to: "notifications#create"
   post 'notifications/mark_as_read', to: "notifications#mark_as_read"
   root to: 'articles#index'
-  mount ActionCable.server => '/cable'
+  # mount ActionCable.server => '/cable'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
