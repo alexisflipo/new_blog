@@ -92,7 +92,7 @@ Rails.application.configure do
   config.action_cable.allowed_request_origins = ['https://talktoducky.herokuapp.com',
                                                  'http://talktoducky.herokuapp.com']
 
-  config.action_cable.url = "wss://talktoducky.herokuapp.com/cable"
+  # config.action_cable.url = "wss://talktoducky.herokuapp.com/cable"
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
   # middleware. The `delay` is used to determine how long to wait after a write
