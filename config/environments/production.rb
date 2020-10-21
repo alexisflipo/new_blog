@@ -91,6 +91,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   # config.action_cable.allowed_request_origins = ['https://talktoducky.herokuapp.com',
   #                                                'http://talktoducky.herokuapp.com']
+  config.action_cable.disable_request_forgery_protection = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :user_name => ENV['GMAIL_USERNAME'],
