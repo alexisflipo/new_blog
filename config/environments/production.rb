@@ -91,7 +91,15 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   # config.action_cable.allowed_request_origins = ['https://talktoducky.herokuapp.com',
   #                                                'http://talktoducky.herokuapp.com']
-
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :user_name => ENV['GMAIL_USERNAME'],
+    :password => ENV['GMAIL_PASSWORD'],
+    :address => 'smtp.gmail.com',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
   # config.action_cable.url = "wss://talktoducky.herokuapp.com/cable"
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
