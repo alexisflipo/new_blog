@@ -15,7 +15,11 @@
       <% if user_signed_in? %>
         <li class="nav-item dropdown navbar-author " data-behaviour="notifications">
           <a class="nav-link nav-email" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-bell nav-sign mr-2" id="notifs-count" data-behaviour="notifications-link" >  <span data-behaviour="unread-count"> <%= current_user.notifications.unread.count %></span> notifications</i> </a>
+            <% if current_user.notifications.unread.count <= 1  %>
+              <i class="fas fa-bell nav-sign mr-2" id="notifs-count" data-behaviour="notifications-link" >  <span data-behaviour="unread-count"> <%= current_user.notifications.unread.count %></span> notification</i> </a>
+              <% else %>
+              <i class="fas fa-bell nav-sign mr-2" id="notifs-count" data-behaviour="notifications-link" >  <span data-behaviour="unread-count"> <%= current_user.notifications.unread.count %></span> notifications</i> </a>
+            <% end %>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1" id="notifs" >
           <% if current_user.notifications.unread.present? %>
           <% current_user.notifications.unread.each do  |notification| %>

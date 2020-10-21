@@ -6,6 +6,11 @@
 .is-valid{
   border-color: red !important;
   box-shadow: none;
+  color: none;
+}
+
+.form-check-input .is-valid {
+  color: none;
 }
 
 button .dropdown {

@@ -18,7 +18,7 @@
           <div class="article-body">
             <%= truncate(article.body.to_plain_text, length: 500) %>
           </div>
-          <footer class="blockquote-footer mt-3"><%= article.author %> - <cite title="datetime"><%= article.created_at.strftime("%b %d - %Y at %H h %M") %></cite></footer>
+          <footer class="blockquote-footer mt-3"><%= article.author %> - <cite title="datetime"><%= time_ago_in_words(article.created_at).capitalize %> ago </cite></footer>
         </blockquote>
         <% if article.body.to_plain_text.length > 400 %>
             <%= link_to "See more", article_path(article), class:"btn btn-light mt-3" %>
