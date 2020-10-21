@@ -5,7 +5,7 @@
       <%= @article.body %>
     </div>
     <div class="d-flex justify-content-center col-sm-12 col-md-8 col-lg-7">
-      <%= @article.created_at.strftime("%b %d - %Y at %H h %M") %>
+      <p> <%= time_ago_in_words(@article.created_at).capitalize %> ago</p>
     </div>
   </div>
 </div>
